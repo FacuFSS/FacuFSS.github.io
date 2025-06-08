@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Historia | Fiorano Automobili</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1C1C1C;
+      color: white;
+      background-image: url('https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-5120x2880-8324.png'); 
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat; 
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgba(215, 38, 56, 0.93); 
+      padding: 20px;
+      text-align: center;
+      font-size: 3.25em;
+      font-weight: 500;
+      color: #FFF;
+      font-family: 'Bebas Neue', sans-serif;
+      position: relative;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      width: 45px;
+      height: 45px;
+      background-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1001;
+      transform: translateY(-50%);
+    }
+
+    .menu-toggle .bar {
+      width: 24px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      border-radius: 2px;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 240px;
+      height: 100%;
+      background-color: rgba(28, 28, 28, 0.98);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+      transition: left 0.3s ease;
+      padding-top: 80px;
+      z-index: 1000;
+    }
+
+    .side-menu.active {
+      left: 0;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .side-menu ul li {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .side-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    .side-menu ul li a:hover {
+      color: #D72638;
+    }
+
+    .contenido {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.7);
+      border-radius: 8px;
+      box-shadow: 0 0 10px #D72638;
+    }
+
+    .contenido h2 {
+      color: #D72638;
+      margin-bottom: 10px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2em;
+    }
+
+    .contenido p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #F0F0F0;
+    }
+
+    footer {
+      background-color: #1C1C1C;
+      text-align: center;
+      color: #A6A6A6;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 90px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #FFFFFF;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #D72638;
+    }
+
+    .social-icons {
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 75px;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-icons a:hover {
+      color: #D72638;
+    }
+
+    .social-icons a span {
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .contenido {
+        margin: 20px;
+      }
+
+      .footer-links {
+        gap: 30px;
+      }
+
+      .social-icons {
+        gap: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  Fiorano Automobili
+</header>
+
+<nav class="side-menu" id="sideMenu">
+  <ul>
+    <li><a href="modelos.html">Modelos</a></li>
+    <li><a href="historia.html">Historia</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="contenido">
+  <h2>Nuestra Historia</h2>
+  <p>
+   Fiorano Automobili fue fundada en 2002 por un joven visionario con una profunda pasión por el automovilismo y una meta clara: traer lo mejor del diseño y la ingeniería europea a Bolivia. Inspirado por las curvas elegantes de los superdeportivos italianos y la excelencia mecánica de marcas legendarias, su sueño comenzó con una pequeña sala de exhibición y una idea ambiciosa: revolucionar la forma en que se vive el lujo sobre ruedas.
+ </p>
+  <p>
+   Lo que comenzó como un pequeño proyecto, pronto se convirtió en un símbolo de elegancia, innovación y rendimiento. A lo largo de los años, Fiorano Automobili ha dejado de ser solo una concesionaria: hoy somos un destino para los que sueñan en grande, para los que viven la velocidad como arte y ven en cada auto una obra maestra de ingeniería.
+ </p>
+  <p>
+   Cada modelo que representamos cuenta una historia; cada cliente, una pasión que compartimos. Desde superdeportivos que despiertan el alma hasta experiencias únicas que conectan a las personas con su amor por el motor, Fiorano Automobili sigue creciendo con la firme convicción de que los sueños sobre ruedas también se construyen en Bolivia.
+ </p>
+
+  <h2>Misión</h2>
+  <p>
+    Brindar a nuestros clientes una experiencia automotriz inigualable, ofreciendo vehículos de alto desempeño, tecnología de punta y atención personalizada que refleje nuestra pasión por la excelencia.
+  </p>
+
+  <h2>Visión</h2>
+  <p>
+    Ser la concesionaria líder en Bolivia en el segmento de autos deportivos y de lujo, promoviendo la innovación, la sostenibilidad y la emoción al conducir.
+  </p>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://revistacar.es/" target="_blank">Noticias</a>
+    <a href="https://www.google.com/maps" target="_blank">Buscar concesionario</a>
+    <a href="https://preowned.ferrari.com/es-ES" target="_blank">Modelos exclusivos únicos</a>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://facebook.com/fiorano_automobili_bo" target="_blank"><i class="fab fa-facebook-f"></i> <span>Facebook</span></a>
+    <a href="https://instagram.com/fiorano_automobili_bo" target="_blank"><i class="fab fa-instagram"></i> <span>Instagram</span></a>
+    <a href="https://youtube.com/@fioranoautomobili_bo" target="_blank"><i class="fab fa-youtube"></i> <span>Youtube</span></a>
+    <a href="https://linkedin.com/company/fiorano-automobili-bo" target="_blank"><i class="fab fa-linkedin-in"></i> <span>LinkedIN</span></a>
+  </div>
+
+  <p>© 2025 Fiorano Automobili. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    menu.classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
