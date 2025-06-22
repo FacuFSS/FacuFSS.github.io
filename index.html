@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fiorano Automobili</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1C1C1C;
+      color: #FFFFFF;
+      background-image: url('https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-5120x2880-8324.png'); 
+      background-size: cover; 
+      background-position: center center; 
+      background-repeat: no-repeat; 
+      background-attachment: fixed; 
+      height: 100vh; 
+    }
+
+    .menu-toggle {
+      position: absolute;
+      top: 50%; 
+      left: 20px;
+      transform: translateY(-50%); 
+      width: 45px;
+      height: 45px;
+      background-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 1001;
+    }
+
+    .menu-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .menu-toggle .bar {
+      width: 24px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px; 
+      width: 240px;
+      height: 100%;
+      background-color: rgba(28, 28, 28, 0.98);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); 
+      transition: left 0.3s ease;
+      padding-top: 80px;
+      z-index: 1000;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu ul li {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .side-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s ease;
+    }
+
+    .side-menu ul li a:hover {
+      color: #D72638;
+    }
+
+    .side-menu.active {
+      left: 0; 
+    }
+
+    header {
+      position: relative;
+    }
+
+    header {
+      background-color: rgba(215, 38, 56, 0.93); 
+      padding: 20px;
+      text-align: center;
+      font-size: 3.25em;
+      font-weight: 500;
+      color: #FFF;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      transition: transform 1s ease;
+    }
+
+    .slider-item {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-bottom: 20px; 
+      align-items: center; 
+      position: relative;
+    }
+
+    .slider-item img {
+      width: 50%; 
+      height: auto; 
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      object-fit: contain; 
+      margin: 0 auto 18px auto; 
+      border: 2px solid #D72638;
+      box-shadow: 0 0 12px #D72638;
+    }
+
+    .slider-text {
+      background-color: rgba(2, 4, 3, 0.75);
+      padding: 10px 20px;
+      font-size: 1.8em;
+      font-weight: 600;
+      color: #D72638;
+      border-radius: 5px;
+      text-align: center;
+      width: 50%;
+      margin: 0 auto 18px auto;
+      line-height: 1.4;
+      border: 2px solid #D72638;
+      box-shadow: 0 0 12px #D72638;
+    }
+
+    .description {
+      background-color: transparent;
+      color: #FCF2F2;
+      padding: 10px 0 0 0;
+      font-size: 0.6em;
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 0;
+      text-align: center;
+      line-height: 1.5;
+      font-weight: 400; 
+    }
+
+    .colores {
+      background-color: rgba(2, 4, 3, 0.75);
+      width: 50%;
+      margin: 0 auto 30px auto;
+      padding: 15px 20px;
+      border-radius: 5px;
+      box-sizing: border-box;
+      text-align: center;
+      border: 2px solid #D72638;
+      box-shadow: 0 0 12px #D72638;
+    }
+
+    .colores > h4 {
+      font-size: 1.8em;
+      font-weight: 600;
+      color: #D72638;
+      margin-bottom: 15px;
+    }
+
+    .colores-lista {
+      display: flex;
+      justify-content: center;
+      gap: 54px; 
+      flex-wrap: wrap;
+    }
+
+    .color-item {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid white;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .color-item:hover {
+      transform: scale(1.3);
+      z-index: 10;
+    }
+
+    .color-item::after {
+      content: attr(data-color);
+      position: absolute;
+      bottom: 120%; 
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0,0,0,0.75);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      user-select: none;
+      font-weight: 500;
+    }
+
+    .color-item:hover::after {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .prev, .next {
+      background-color: #D72638;
+      color: #FCF2F2;
+      padding: 10px;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease; 
+      user-select: none;
+    }
+
+    .add-to-cart-btn {
+      font-size: 0.6em; 
+      background-color: #D72638;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+      margin: 10px 0 0 0;
+      box-shadow: 0 0 8px rgba(215, 38, 56, 0.6);
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #B71C1C;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: #2c2c2c;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      color: white;
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #D72638;
+      border-radius: 5px;
+      background-color: #1C1C1C;
+      color: white;
+    }
+
+    .modal-content button {
+      background-color: #D72638;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #a41e2c;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #fff;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: #D40000;
+      transform: scale(1.2); 
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 0 93px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #FFFFFF;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #D72638;
+    }
+
+    .social-icons {
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0 75px;
+    }
+
+    .social-icons a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #D72638;
+    }
+
+    .social-icons a span {
+      font-size: 0.9em;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    footer {
+      background-color: #1C1C1C;
+      text-align: center;
+      color: #A6A6A6;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .slider-item img {
+        width: 80%;
+      }
+
+      .slider-text,
+      .description,
+      .colores {
+        width: 90%;
+      }
+
+      .colores-lista {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ <header>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  Fiorano Automobili
+</header>
+
+
+<nav class="side-menu" id="sideMenu">
+  <ul>
+    <li><a href="index.html">Modelos</a></li>
+    <li><a href="historia.html">Historia</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  </nav>
+
+  <div class="slider-container">
+    <div class="slider-wrapper" id="slider">
+      <!-- Slide 1: Ferrari 812 Superfast -->
+      <div class="slider-item">
+        <img src="https://ferrari-cdn.thron.com/api/xcontents/resources/delivery/getThumbnail/ferrari/1920x1080/db8bacae-14ae-495e-98e0-37fe9d2db844.jpg?v=200" alt="Ferrari 812 Superfast" />
+        <div class="slider-text">
+          Ferrari 812 Superfast - USD 613,888
+        <div class="description description-812-superfast">
+          El Ferrari 812 Superfast es un superdeportivo con un motor V12 de 800 caballos de fuerza, y es la versión más potente de la serie 812. Su aceleración, agilidad y rendimiento sobresalientes lo convierten en una máquina de alto rendimiento. Su estética es tan impresionante como su rendimiento, y su tecnología avanzada lo sitúa en lo más alto de los deportivos de lujo.
+        </div>
+        <button class="add-to-cart-btn" onclick="openForm(this)">Agregar al carrito</button>
+     </div>
+
+        <div class="colores">
+          <h4>Colores disponibles</h4>
+          <div class="colores-lista">
+            <div class="color-item" style="background-color:#D72638" data-color="Rojo Ferrari"></div>
+            <div class="color-item" style="background-color:#FFFFFF" data-color="Blanco"></div>
+            <div class="color-item" style="background-color:#000000" data-color="Negro"></div>
+            <div class="color-item" style="background-color:#FFC107" data-color="Amarillo"></div>
+            <div class="color-item" style="background-color:#007BFF" data-color="Azul"></div>
+            <div class="color-item" style="background-color:#8B4513" data-color="Marrón"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Ferrari Purosangue -->
+      <div class="slider-item">
+        <img src="https://static0.carbuzzimages.com/wordpress/wp-content/uploads/2024/07/ferrari-purosangue-2023-1280-02.jpg" alt="Ferrari Purosangue" />
+        <div class="slider-text">
+          Ferrari Purosangue - USD 535,800
+        <div class="description description-purosangue">
+          El Ferrari Purosangue es el primer SUV de Ferrari, equipado con un motor V12 atmosférico. Este modelo combina el lujo y la versatilidad de un SUV con el rendimiento de un deportivo Ferrari. Ofrece una experiencia única, capaz de ofrecer comodidad y emoción, sin perder la esencia de Ferrari.
+        </div>
+        <button class="add-to-cart-btn" onclick="openForm(this)">Agregar al carrito</button>
+     </div>
+
+        <div class="colores">
+          <h4>Colores disponibles</h4>
+          <div class="colores-lista">
+            <div class="color-item" style="background-color:#A52A2A" data-color="Marrón"></div>
+            <div class="color-item" style="background-color:#808080" data-color="Gris"></div>
+            <div class="color-item" style="background-color:#000000" data-color="Negro"></div>
+            <div class="color-item" style="background-color:#FFFFFF" data-color="Blanco"></div>
+            <div class="color-item" style="background-color:#D72638" data-color="Rojo Ferrari"></div>
+            <div class="color-item" style="background-color:#FFD700" data-color="Dorado"></div>
+            <div class="color-item" style="background-color:#228B22" data-color="Verde"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Lamborghini Revuelto -->
+      <div class="slider-item">
+        <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/revuelto/og.jpg" alt="Lamborghini Revuelto" />
+        <div class="slider-text">
+          Lamborghini Revuelto - USD 625,000
+        <div class="description description-revuelto">
+          El Lamborghini Revuelto es un superdeportivo híbrido con un motor V12 de 825 caballos de fuerza combinado con motores eléctricos, lo que lo convierte en un modelo de alto rendimiento que ofrece una aceleración impresionante y una experiencia de conducción única. Su diseño futurista y su sistema de tracción integral lo hacen destacar entre los deportivos más avanzados del mundo.
+        </div>
+        <button class="add-to-cart-btn" onclick="openForm(this)">Agregar al carrito</button>
+     </div>
+
+        <div class="colores">
+          <h4>Colores disponibles</h4>
+          <div class="colores-lista">
+            <div class="color-item" style="background-color:#FF0000" data-color="Rojo"></div>
+            <div class="color-item" style="background-color:#000000" data-color="Negro"></div>
+            <div class="color-item" style="background-color:#FFFFFF" data-color="Blanco"></div>
+            <div class="color-item" style="background-color:#FFD700" data-color="Dorado"></div>
+            <div class="color-item" style="background-color:#00008B" data-color="Azul Oscuro"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Lamborghini URUS SE -->
+      <div class="slider-item">
+        <img src="https://www.topgear.com/sites/default/files/2024/10/1-Lamborghini-Urus-SE-review-2024.jpg" alt="Lamborghini URUS SE" />
+        <div class="slider-text">
+          Lamborghini URUS SE - USD 262,631
+        <div class="description description-urus">
+          El Lamborghini URUS SE es la versión más deportiva de este SUV, con un motor V8 biturbo de 650 caballos de fuerza. Con un diseño más agresivo y dinámico, el URUS SE ofrece un rendimiento sobresaliente en carretera y fuera de ella, sin comprometer el lujo y confort que caracterizan a Lamborghini.
+        </div>
+        <button class="add-to-cart-btn" onclick="openForm(this)">Agregar al carrito</button>
+     </div>
+
+        <div class="colores">
+          <h4>Colores disponibles</h4>
+          <div class="colores-lista">
+            <div class="color-item" style="background-color:#1E90FF" data-color="Azul Cielo"></div>
+            <div class="color-item" style="background-color:#696969" data-color="Gris Oscuro"></div>
+            <div class="color-item" style="background-color:#000000" data-color="Negro"></div>
+            <div class="color-item" style="background-color:#FFFFFF" data-color="Blanco"></div>
+            <div class="color-item" style="background-color:#FF4500" data-color="Naranja"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Aston Martin Vantage (2024) -->
+      <div class="slider-item">
+        <img src="https://wallpaperbat.com/img/102240-aston-martin-vantage-wallpaper-specs-videos-4k-hd.jpg" alt="Aston Martin Vantage" />
+        <div class="slider-text">
+          Aston Martin Vantage (2024) - USD 179,800
+        <div class="description description-vantage">
+          El Aston Martin Vantage (2024) es un deportivo compacto con un motor V8 turboalimentado que ofrece 510 caballos de fuerza. Su diseño elegante y sus capacidades de manejo lo convierten en un rival formidable en el mundo de los deportivos de lujo, con un rendimiento impresionante en cualquier carretera.
+        </div>
+        <button class="add-to-cart-btn" onclick="openForm(this)">Agregar al carrito</button>
+     </div>
+
+        <div class="colores">
+          <h4>Colores disponibles</h4>
+          <div class="colores-lista">
+            <div class="color-item" style="background-color:#800000" data-color="Granate"></div>
+            <div class="color-item" style="background-color:#000000" data-color="Negro"></div>
+            <div class="color-item" style="background-color:#FFFFFF" data-color="Blanco"></div>
+            <div class="color-item" style="background-color:#B22222" data-color="Rojo Ladrillo"></div>
+            <div class="color-item" style="background-color:#2F4F4F" data-color="Gris Pizarra"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Aston Martin DBX -->
+      <div class="slider-item">
+        <img src="https://www.planetcarsz.com/img/noticias/2021/11/aston-martin-dbx-straight-six-2021-01-20211118203251-1920x1080.jpg" alt="Aston Martin DBX" />
+        <div class="slider-text">
+          Aston Martin DBX - USD 245,086
+        <div class="description description-dbx">
+          El Aston Martin DBX es el SUV de lujo de la marca británica, con un motor V8 biturbo de 542 caballos de fuerza. Combina la versatilidad de un SUV con la elegancia y el lujo característicos de Aston Martin. Su diseño estilizado y su rendimiento impresionante lo convierten en una opción única para quienes buscan algo más que un simple SUV.
+        </div>
+        <button class="add-to-cart-btn" onclick="openForm(this)">Agregar al carrito</button>
+      </div>
+
+        <div class="colores">
+          <h4>Colores disponibles</h4>
+          <div class="colores-lista">
+            <div class="color-item" style="background-color:#2E8B57" data-color="Verde Bosque"></div>
+            <div class="color-item" style="background-color:#000000" data-color="Negro"></div>
+            <div class="color-item" style="background-color:#FFFFFF" data-color="Blanco"></div>
+            <div class="color-item" style="background-color:#A9A9A9" data-color="Gris"></div>
+            <div class="color-item" style="background-color:#FFD700" data-color="Dorado"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <div class="modal" id="carFormModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeForm()">&times;</span>
+    <h2>Agregar al carrito</h2>
+    <form id="carForm" onsubmit="submitForm(event)">
+      <input type="text" id="userName" placeholder="Tu nombre" required />
+      <input type="email" id="userEmail" placeholder="Correo electrónico" required />
+      <input type="text" id="carModel" readonly />
+      <input type="text" id="selectedColor" placeholder="Color elegido" readonly required />
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="formMessage" style="display:none; color: lightgreen; margin-top: 10px;">¡Auto agregado exitosamente!</p>
+  </div>
+  </div>
+
+  <footer>
+  <div class="footer-links">
+    <a href="https://revistacar.es/" target="_blank">Noticias</a>
+    <a href="https://www.google.com/maps" target="_blank">Buscar concesionario</a>
+    <a href="https://preowned.ferrari.com/es-ES?_gl=1*1aijvpq*_ga*NTIyODg5ODMzLjE3NDkxMzQ4MDE.*_ga_JM1HT9B412*czE3NDkzODcxMjkkbzkkZzEkdDE3NDkzODcxMzMkajU2JGwwJGg2MTI1NDgzNzU" target="_blank">Modelos exclusivos únicos</a>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://facebook.com/fiorano_automobili_bo" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+    </a>
+    <a href="https://instagram.com/fiorano_automobili_bo" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i> <span>Instagram</span>
+    </a>
+    <a href="https://youtube.com/@fioranoautomobili_bo" target="_blank" aria-label="YouTube">
+      <i class="fab fa-youtube"></i> <span>Youtube</span>
+    </a>
+    <a href="https://linkedin.com/company/fiorano-automobili-bo" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i> <span>LinkedIN</span>
+    </a>
+  </div>
+
+  <p>© 2025 Fiorano Automobili. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+  let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider-item');
+    const sliderWrapper = document.getElementById('slider');
+
+  function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    menu.classList.toggle('active');
+  }
+
+  let autoSlideInterval = setInterval(() => {
+    moveSlide(1);
+  }, 12000);
+
+  function moveSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide < 0) {
+      currentSlide = slides.length - 1;
+    } else if (currentSlide >= slides.length) {
+      currentSlide = 0;
+    }
+    updateSliderPosition();
+    resetAutoSlide(); 
+  }
+
+  function updateSliderPosition() {
+    const offset = -currentSlide * 100;
+    sliderWrapper.style.transform = `translateX(${offset}%)`;
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideInterval); 
+    autoSlideInterval = setInterval(() => {
+      moveSlide(1);
+    }, 12000); 
+  }
+  function openForm(button) {
+  const sliderItem = button.closest('.slider-item');
+  const modelName = sliderItem.querySelector('.slider-text').childNodes[0].textContent.trim();
+  document.getElementById('carModel').value = modelName;
+  
+  const modal = document.getElementById('carFormModal');
+  modal.style.display = 'block';
+
+  const colorItems = sliderItem.querySelectorAll('.color-item');
+  colorItems.forEach(item => {
+    item.onclick = () => {
+      const color = item.getAttribute('data-color');
+      document.getElementById('selectedColor').value = color;
+
+      colorItems.forEach(i => i.style.outline = 'none');
+      item.style.outline = '3px solid #D72638';
+    };
+  });
+}
+
+function closeForm() {
+  document.getElementById('carFormModal').style.display = 'none';
+  document.getElementById('carForm').reset();
+  document.getElementById('formMessage').style.display = 'none';
+}
+
+function submitForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('userName').value.trim();
+  const email = document.getElementById('userEmail').value.trim();
+  const model = document.getElementById('carModel').value.trim();
+  const color = document.getElementById('selectedColor').value.trim();
+
+  if (!name || !email || !model || !color) {
+    alert("Por favor, completa todos los campos y selecciona un color.");
+    return;
+  }
+
+  console.log("Formulario enviado:", { name, email, model, color });
+  document.getElementById('formMessage').style.display = 'block';
+
+  setTimeout(() => {
+    closeForm();
+  }, 2500);
+}
+
+  </script>
+</body>
+</html>
